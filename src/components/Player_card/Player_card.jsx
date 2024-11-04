@@ -2,12 +2,12 @@ import "./Player_card.css";
 import Lol from "../../assets/IMG/lol.jpg";
 import Fornite from "../../assets/IMG/fornite.jpg";
 import Valorant from "../../assets/IMG/valorant.jpg";
-import Player from "../../assets/IMG/player.png";
+import Player from "../../assets/img/player.png";
 import MarcoPlayer from "../../assets/IMG/marco_player.png";
-import mid from "../../assets/IMG/mid.png";
+// import ImagesPath from "../../assets/img/";
 
 
-export const PlayerCard = ({nickname , lane}) => {
+export const PlayerCard = ({nickname , lane , id}) => {
  
    
   return (
@@ -22,10 +22,15 @@ export const PlayerCard = ({nickname , lane}) => {
                 <img className="datos_player" src={MarcoPlayer} alt="" />
               </div>
               <div>
-                <img className="lane_player" src={lane} alt="" />
+              
+                <img className="lane_player" src= {`/src/assets/img/${lane}.png`} alt="no hay img" />
+              
               </div>
               <div>
                 <h1 className="nickname">{nickname}</h1>
+              </div>
+              <div>
+                <h1 className="nickname">{id}</h1>
               </div>
             </div>
           </div>

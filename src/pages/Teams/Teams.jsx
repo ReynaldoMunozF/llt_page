@@ -5,7 +5,8 @@ import Valorant from "../../assets/IMG/valorant.jpg";
 import Player from "../../assets/IMG/player.png";
 import MarcoPlayer from "../../assets/IMG/marco_player.png";
 import mid from "../../assets/IMG/mid.png";
-import { PLayers } from "../../Services/players";
+import { Players } from "../../Services/players";
+import { Players2 } from "../../Services/players";
 
 import { useEffect, useState } from "react";
 import { PlayerCard } from "../../components/Player_card/Player_card";
@@ -14,7 +15,7 @@ export const Teams = () => {
   const [isEditing, setIsEditing] = useState(true);
   const [isLol, setIsLol] = useState(false);
 
-console.log(PLayers[0].lane);
+  console.log(Players[0].lane);
 
   return (
     <div className="container_t">
@@ -39,17 +40,28 @@ console.log(PLayers[0].lane);
 
       {isLol ? (
         <>
-        {PLayers.map((id, index) => (
+        <div className="container_players">
+          <div className="titulares">
+          {Players.map((id, index) => (
+            
             <PlayerCard
-            key={index}
-            nickname={PLayers[index].name}
-            lane={PLayers[index].lane}
+              key={index}
+              nickname={Players[index].name}
+              lane={Players[index].lane}
+              
             />
-            
-            
-        ))}
-
-       
+          ))}
+          </div>
+          <div className="suplentes">
+          {Players2.map((id, index) => (
+            <PlayerCard
+              key={index}
+              nickname={Players2[index].name}
+              lane={Players2[index].lane}
+            />
+          ))}
+          </div>
+          </div>
 
           {/* <div className="container_player">
             <div className="foto_player">

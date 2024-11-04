@@ -106,3 +106,13 @@
     margin-top: -11.5em;
     margin-left: 8.5em;
 }
+
+.titulares{
+    display: flex;
+    gap: 2em;
+}
+.suplentes{
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
