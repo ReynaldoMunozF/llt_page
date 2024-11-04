@@ -1,0 +1,14 @@
+.conatiner_nav{
+    display: flex;
+    flex-direction: column;
+    
+}
+.bg-body-tertiary{
+    width: 100%;
+    
+   
+}
+.img {
+    width: 4em;
+    
+}

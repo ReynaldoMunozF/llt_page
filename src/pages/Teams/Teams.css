@@ -1,0 +1,67 @@
+.container_t{
+    display: flex;
+    margin: 2em;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@media (max-width: 600px) {
+    .container_t{
+      flex-direction: column;
+    }
+    
+  }
+
+.img_teams{
+    width: 30em;
+    border-radius: 40px;
+}
+
+@media (max-width: 600px) {
+    .img_teams {
+        width: 24em;
+      
+    
+    }
+    
+  }
+
+.foto_valorant {
+    filter: grayscale(100%);
+    transition:all 0.3s;
+    
+
+}
+
+.foto_valorant:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+.foto_fornite {
+    filter: grayscale(100%);
+    transition:all 0.3s;
+
+}
+
+.foto_fornite:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+.foto_lol {
+    filter: grayscale(100%);
+    transition:all 0.3s;
+
+}
+
+.foto_lol:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+
+
+.img_players{
+    width: 20em;
+}
