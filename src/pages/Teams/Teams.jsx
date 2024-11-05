@@ -40,45 +40,26 @@ export const Teams = () => {
 
       {isLol ? (
         <>
-        <div className="container_players">
-          <div className="titulares">
-          {Players.map((id, index) => (
-            
-            <PlayerCard
-              key={index}
-              nickname={Players[index].name}
-              lane={Players[index].lane}
-              
-            />
-          ))}
-          </div>
-          <div className="suplentes">
-          {Players2.map((id, index) => (
-            <PlayerCard
-              key={index}
-              nickname={Players2[index].name}
-              lane={Players2[index].lane}
-            />
-          ))}
-          </div>
-          </div>
-
-          {/* <div className="container_player">
-            <div className="foto_player">
-              <img className="img_players" src={Player} alt="" />
+          <div className="container_players">
+            <div className="titulares">
+              {Players.map((id, index) => (
+                <PlayerCard
+                  key={index}
+                  nickname={Players[index].name}
+                  lane={Players[index].lane}
+                />
+              ))}
             </div>
-            <div className="card_player">
-              <div>
-                <img className="datos_player" src={MarcoPlayer} alt="" />
-              </div>
-              <div>
-                <img className="lane_player" src={Mid} alt="" />
-              </div>
-              <div>
-                <h1 className="nickname">XLANYERX</h1>
-              </div>
+            <div className="suplentes">
+              {Players2.map((id, index) => (
+                <PlayerCard
+                  key={index}
+                  nickname={Players2[index].name}
+                  lane={Players2[index].lane}
+                />
+              ))}
             </div>
-          </div> */}
+          </div>
         </>
       ) : null}
     </div>
