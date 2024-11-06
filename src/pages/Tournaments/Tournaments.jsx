@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+import "./Tournaments.css";
+import Button from 'react-bootstrap/Button';
+import { Llt_team } from "../../Services/players";
+
 
 export const Tournaments = () => {
   const [player, setPlayer] = useState({
@@ -11,6 +15,8 @@ export const Tournaments = () => {
   const [grupo2Final, setGrupo2Final] = useState([]);
   const [matchgrupo1, setMatchGrupo1] = useState([]);
   const [matchgrupo2, setMatchGrupo2] = useState([]);
+  const [isRegistration, setIsRegistration] = useState(false);
+  const [isAlert, setIsAlert] = useState(false);
 
   const inputGroup = (event) => {
     setPlayer((prevState) => ({
@@ -20,11 +26,13 @@ export const Tournaments = () => {
   };
 
   const addPlayers = () => {
-    if (player.namePlayer && player.nickname) {
+    if (player.namePlayer && player.nickname && Llt_team.includes(player.nickname)) {
+     
       setPlayers((prevPlayers) => [...prevPlayers, player]);
       console.log([...players, player]);
       setPlayer({ namePlayer: "", nickname: "" });
     } else {
+      setIsAlert(true);
       console.error("ambos campos son obligatorios");
     }
   };
@@ -87,34 +95,54 @@ export const Tournaments = () => {
   }, [players]);
 
   return (
-    <div className="container_input">
-      <input
+
+    <div className="container_tournament">
+       <div className="container_select_tournament">
+      <img className= "img_tournament" onClick={() => setIsRegistration(true)} src="/src/assets/img/copa_toxic.png" alt="" />
+      </div>
+      {isRegistration ? (
+        
+      <div className="registration">
+      <input className="input1"
         type="text"
         name="namePlayer"
         value={player.namePlayer}
         onChange={inputGroup}
         placeholder="Player Name"
       />
-      <input
+      
+      <input className="input1"
+      
         type="text"
         name="nickname"
         value={player.nickname}
         onChange={inputGroup}
         placeholder="Nickname"
       />
-      <button onClick={addPlayers}>Add Player</button>
-      <div>
-        <h3>Players List:</h3>
-        <ul>
+      <Button variant="outline-warning" onClick={addPlayers}>Registration</Button>{' '}
+      {isAlert ? (
+      <h3 className="alert">El Jugador no esta habilitado para este torneo</h3>
+       ) : null}
+      
+      
+        <div className="background_players">
+         <img className="img_background_player" src="/src/assets/img/fondo_players.jpg" alt="" /> 
+        <div className="list_player">
+        <ul >
           {players.map((p, index) => (
             <li key={index}>
-              {p.namePlayer} ({p.nickname})
+              {p.nickname} ({p.namePlayer})
             </li>
           ))}
         </ul>
-        <button onClick={dividirGrupos}>GENERA LOS GRUPOS</button>
+          </div>
       </div>
-      <div>
+      </div>
+        
+      ) : null}
+      
+      {/* <div>
+        <button onClick={dividirGrupos}>GENERA LOS GRUPOS</button>
         <ul>
           <h3>GRUPO1 :</h3>
           {grupo1Final.map((p, index) => (
@@ -150,7 +178,7 @@ export const Tournaments = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
