@@ -17,6 +17,7 @@ export const Tournaments = () => {
   const [matchgrupo2, setMatchGrupo2] = useState([]);
   const [isRegistration, setIsRegistration] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
+  const [isGroups, setIsGroups] = useState(false);
 
   const inputGroup = (event) => {
     setPlayer((prevState) => ({
@@ -24,9 +25,9 @@ export const Tournaments = () => {
       [event.target.name]: event.target.value,
     }));
   };
-
+  // Llt_team.includes(player.nickname)
   const addPlayers = () => {
-    if (player.namePlayer && player.nickname && Llt_team.includes(player.nickname)) {
+    if (player.namePlayer && player.nickname ) {
      
       setPlayers((prevPlayers) => [...prevPlayers, player]);
       console.log([...players, player]);
@@ -121,8 +122,8 @@ export const Tournaments = () => {
       />
       <Button variant="outline-warning" onClick={addPlayers}>Registration</Button>{' '}
       {isAlert ? (
-      <h3 className="alert">El Jugador no esta habilitado para este torneo</h3>
-       ) : null}
+        <h3 className="alert">El Jugador no esta habilitado para este torneo</h3>
+      ) : null}
       
       
         <div className="background_players">
@@ -130,37 +131,46 @@ export const Tournaments = () => {
         <div className="list_player">
         <ul >
           {players.map((p, index) => (
-            <li key={index}>
+            <li className="lista" key={index}>
               {p.nickname} ({p.namePlayer})
             </li>
           ))}
         </ul>
           </div>
       </div>
+      <Button variant="outline-warning" onClick={()=> (dividirGrupos() , setIsGroups(true), setIsRegistration(false))}>CREAR GRUPOS</Button>{' '}
       </div>
         
       ) : null}
-      
-      {/* <div>
-        <button onClick={dividirGrupos}>GENERA LOS GRUPOS</button>
+
+      {isGroups ? (
+      <div className="container_groups">
+      <div className="groups">
+        
         <ul>
-          <h3>GRUPO1 :</h3>
+          <div className="title_group">  &nbsp;GRUPO1 :</div>
           {grupo1Final.map((p, index) => (
-            <li key={index}>
-              {grupo1Final[index].namePlayer} ({grupo1Final[index].nickname})
-            </li>
+            <div className="celda_grupo" key={index}>
+               &nbsp; &nbsp;{grupo1Final[index].namePlayer} ({grupo1Final[index].nickname})
+            </div>
           ))}
         </ul>
       </div>
-      <div>
+      <div className="groups">
+        
         <ul>
-          <h3>GRUPO2 :</h3>
+          <div className="title_group">  &nbsp;GRUPO2 :</div>
           {grupo2Final.map((p, index) => (
-            <li key={index}>
-              {p.namePlayer} ({p.nickname})
-            </li>
+            <div className="celda_grupo" key={index}>
+               &nbsp; &nbsp;{grupo2Final[index].namePlayer} ({grupo2Final[index].nickname})
+            </div>
           ))}
         </ul>
+      </div>
+        </div>
+    ) : null}
+      
+              {/* <div>
         <button onClick={generateMatchups}>GENERA LAS LLAVES</button>
         <ul>
           <h3>PARTIDOS GRUPO1 :</h3>

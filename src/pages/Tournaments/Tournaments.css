@@ -1,16 +1,16 @@
-body {
-  margin: 0;
-  padding: 0;
-}
 
+body{
+  background-color: black !important ;
+}
 .container_tournament {
   background-color: black;
-  height: 100em;
+ 
   display: flex;
 
   align-items: center;
   flex-direction: column;
   gap: 1em;
+  
 }
 .img_tournament {
   width: 30em;
@@ -42,15 +42,12 @@ body {
 .registration {
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   border-radius: 40px;
-
   background-color: #000000;
   color: #ffffff;
   width: 25em;
-  height: 20em;
+  
 
   gap: 1em;
 }
@@ -67,12 +64,26 @@ body {
 .background_players {
   margin-top: 2em;
   display: flex;
+  transition: font-size 3s, color 2s;
+  
 }
 .img_background_player {
   width: 80em;
   height: 45em;
-  object-fit: cover;
-  object-position: center;
+  opacity: 0; /* Comienza invisible */
+  animation: fadeIn 1s ease-in forwards; /* Duración de la animación, tipo de animación y hacia donde se mueve */
+ 
+}
+
+
+/* Definir la animación */
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Comienza completamente invisible */
+  }
+  100% {
+    opacity: 1; /* Termina completamente visible */
+  }
 }
 @media (max-width: 600px) {
   .img_background_player {
@@ -83,10 +94,8 @@ body {
 
 .list_player {
   position: absolute;
-
-  width: 15em;
+  width: 20em;
   height: 20em;
-
   color: #ffffff;
   margin-top: -2em;
   margin-left: 20em;
@@ -98,6 +107,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1em;
+  
 }
 
 @media (max-width: 600px) {
@@ -114,4 +124,73 @@ body {
    
     font-size: 1em;
     color: red !important;
+}
+.title_group{
+  display: flex;
+  align-items: center;
+  width: 20em;
+  height: 2em;
+  background-color: #e0bf04;
+  border: 1px solid #f5e534;
+  color: #000000;
+  font-size: 1.5em;
+
+}
+.lista{
+  opacity: 0; /* Comienza invisible */
+  animation: fadeIn 1s ease-in forwards; /* Duración de la animación, tipo de animación y hacia donde se mueve */
+ 
+}
+.celda_grupo{
+  display: flex;
+  align-items: center;
+  width: 20em;
+  height: 2em;
+  background-color: #000000;
+  
+  border: 1px solid #f5e534;
+  color: #e1e3e4;
+  font-size: 1.5em;
+  
+}
+.container_groups{
+  display: flex;
+  flex-direction: row;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  justify-content: center;
+  margin-top: 6em;
+  opacity: 0; /* Comienza invisible */
+  animation: fadeIn 1s ease-in forwards; /* Duración de la animación, tipo de animación y hacia donde se mueve */
+ 
+  
+}
+@media (max-width: 600px) {
+  .container_groups {
+    flex-direction: column;
+    justify-content: center;
+    
+    width: 30em;
+    height: 15em;
+    font-size: 0.8em;
+  
+  }
+}
+@media (max-width: 600px) {
+  .celda_grupo {
+    flex-direction: column;
+    width: 18em;
+    height: 2em;
+  
+  
+  }
+}
+@media (max-width: 600px) {
+  .title_group {
+    flex-direction: column;
+    width: 18em;
+    height: 2em;
+  
+  
+  }
 }
