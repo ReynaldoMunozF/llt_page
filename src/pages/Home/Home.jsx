@@ -4,6 +4,8 @@ import { Result } from "../../components/Results/Results.jsx";
 
 export const Home = () => {
   console.log(informationTournaments);
+  console.log(informationTournaments);
+  console.log(informationTournaments);
 
   return (
     <div className="contenedor">
