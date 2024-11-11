@@ -2,9 +2,6 @@ import "./Teams.css";
 import Lol from "../../assets/img/lol.jpg";
 import Fornite from "../../assets/img/fornite.jpg";
 import Valorant from "../../assets/img/valorant.jpg";
-import Player from "../../assets/IMG/player.png";
-import MarcoPlayer from "../../assets/IMG/marco_player.png";
-import mid from "../../assets/IMG/mid.png";
 import { Players } from "../../Services/players";
 import { Players2 } from "../../Services/players";
 
