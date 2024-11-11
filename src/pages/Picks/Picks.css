@@ -1,0 +1,58 @@
+
+.container_picks{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+
+}
+.container_champions{
+    display: flex;
+    flex-direction: column;
+text-align: center;
+    border: 2px solid #383838;
+   
+    color: aliceblue;
+}
+.img_champion{
+    width: 20em;
+    height:35em;
+    border-radius: 4px;
+}
+.input_search{
+    display: flex;
+   
+    width: 150em;
+    justify-content: center;
+    margin-top: 3em;
+   
+}
+input{
+    width: 40em;
+    border-radius: 30px;
+    padding: 1em;
+    margin: 1em;
+}
+.container_all_champions{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+.champions_band{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150em;
+    color: aliceblue;
+    text-align: center;
+}
+.container_champions_ban{
+    display: flex;
+   
+    
+    
+}

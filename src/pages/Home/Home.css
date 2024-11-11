@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Oculta el scrollbar */
+}
+
+.contenedor {
+    display: flex;
+    flex-wrap: nowrap; /* Mantiene los items en una sola línea */
+    width: 100vw; /* Ancho del contenedor igual al ancho de la ventana */
+    height: 15vh; /* Altura del contenedor proporcional a la ventana */
+    overflow: hidden;
+   /* animation: desplazamiento 20s linear 2s infinite alternate-reverse;  Animación */
+}
+
+.item {
+    width: 18em;
+    height: 12vh; /* Altura proporcional a la ventana */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #163450; /* Color de fondo */
+    color: white; /* Color del texto */
+    margin: 0.5em; /* Espaciado entre divs */
+    border-radius: 10px;
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
+}
+
+
+@media (max-width: 600px) {
+    /* Animación en dispositivos móviles */
+   .contenedor {
+width: 260em;
+  
+height: 15vh;
+overflow: hidden;
+  
+ animation: desplazamiento 20s linear 0s infinite alternate-reverse; 
+ 
+   }
+   .item {
+    width: 20em;
+   }
+   
+}
+
+@keyframes desplazamiento {
+    0% {
+        transform: translateX(0%); /* Comienza en la posición original */
+    }
+    100% {
+        transform: translateX(-100%); /* Desplaza completamente hacia la izquierda */
+    }
+}

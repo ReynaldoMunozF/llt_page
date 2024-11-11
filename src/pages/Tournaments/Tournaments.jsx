@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Tournaments.css";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { Llt_team } from "../../Services/players";
-
+import Spinner from 'react-bootstrap/Spinner';
 
 export const Tournaments = () => {
   const [player, setPlayer] = useState({
@@ -18,6 +18,7 @@ export const Tournaments = () => {
   const [isRegistration, setIsRegistration] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
   const [isGroups, setIsGroups] = useState(false);
+  const [isLoadingGroups, setIsLoadingGroups] = useState(false);
 
   const inputGroup = (event) => {
     setPlayer((prevState) => ({
@@ -27,8 +28,7 @@ export const Tournaments = () => {
   };
   // Llt_team.includes(player.nickname)
   const addPlayers = () => {
-    if (player.namePlayer && player.nickname ) {
-     
+    if (player.namePlayer && player.nickname) {
       setPlayers((prevPlayers) => [...prevPlayers, player]);
       console.log([...players, player]);
       setPlayer({ namePlayer: "", nickname: "" });
@@ -70,22 +70,32 @@ export const Tournaments = () => {
 
     //---------------------------------------------------------
     for (let i = matchupsGrupo1.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [matchupsGrupo1[i], matchupsGrupo1[j]] = [matchupsGrupo1[j], matchupsGrupo1[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [matchupsGrupo1[i], matchupsGrupo1[j]] = [
+        matchupsGrupo1[j],
+        matchupsGrupo1[i],
+      ];
     }
     for (let i = matchupsGrupo2.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [matchupsGrupo2[i], matchupsGrupo2[j]] = [matchupsGrupo2[j], matchupsGrupo2[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [matchupsGrupo2[i], matchupsGrupo2[j]] = [
+        matchupsGrupo2[j],
+        matchupsGrupo2[i],
+      ];
     }
 
     setMatchGrupo1(matchupsGrupo1);
     setMatchGrupo2(matchupsGrupo2);
   };
 
-  console.log(matchgrupo1);
-  console.log(matchgrupo2);
-  console.log(matchgrupo1[0]);
+ const loadGroups = () => {
+  setIsLoadingGroups(true);
+  setTimeout(() => {
+    setIsLoadingGroups(false);
+    setIsGroups(true);
+  }, 5000);
 
+ }
 
   useEffect(() => {
     console.log(player, "estoyaqui");
@@ -96,81 +106,114 @@ export const Tournaments = () => {
   }, [players]);
 
   return (
-
     <div className="container_tournament">
-       <div className="container_select_tournament">
-      <img className= "img_tournament" onClick={() => setIsRegistration(true)} src="/src/assets/img/copa_toxic.png" alt="" />
+      <div className="container_select_tournament">
+        <img
+          className="img_tournament"
+          onClick={() => setIsRegistration(true)}
+          src="/src/assets/img/copa_toxic.png"
+          alt=""
+        />
       </div>
       {isRegistration ? (
-        
-      <div className="registration">
-      <input className="input1"
-        type="text"
-        name="namePlayer"
-        value={player.namePlayer}
-        onChange={inputGroup}
-        placeholder="Player Name"
-      />
-      
-      <input className="input1"
-      
-        type="text"
-        name="nickname"
-        value={player.nickname}
-        onChange={inputGroup}
-        placeholder="Nickname"
-      />
-      <Button variant="outline-warning" onClick={addPlayers}>Registration</Button>{' '}
-      {isAlert ? (
-        <h3 className="alert">El Jugador no esta habilitado para este torneo</h3>
-      ) : null}
-      
-      
-        <div className="background_players">
-         <img className="img_background_player" src="/src/assets/img/fondo_players.jpg" alt="" /> 
-        <div className="list_player">
-        <ul >
-          {players.map((p, index) => (
-            <li className="lista" key={index}>
-              {p.nickname} ({p.namePlayer})
-            </li>
-          ))}
-        </ul>
+        <div className="registration">
+          <input
+            className="input1"
+            type="text"
+            name="namePlayer"
+            value={player.namePlayer}
+            onChange={inputGroup}
+            placeholder="Player Name"
+          />
+          <input
+            className="input1"
+            type="text"
+            name="nickname"
+            value={player.nickname}
+            onChange={inputGroup}
+            placeholder="Nickname"
+          />
+          <Button variant="outline-warning" onClick={addPlayers}>
+            REGISTER
+          </Button>{" "}
+          {isAlert ? (
+            <h3 className="alert">
+              El Jugador no esta habilitado para este torneo
+            </h3>
+          ) : null}
+          <br />
+              <h3>PLAYERS</h3>
+          <div className="background_players">
+            {/* <img className="img_background_player" src="/src/assets/img/fondo_players.jpg" alt="" />  */}
+              {players.map((p, index) => (
+                <div className="lista" key={index}>
+                  
+                    <img
+                      className="avatar"
+                      src={`/src/assets/img/avatar_${index+1}.png`}
+                      alt=""
+                      />
+                  <p className="name_player"> {p.nickname} ({p.namePlayer})</p>
+                     
+                </div>
+                 
+                ))}
+           
           </div>
+          <br />
+            <br />
+          <Button
+            variant="outline-warning"
+            onClick={() => (
+              dividirGrupos(), loadGroups(), setIsRegistration(false)
+            )}
+          >
+            CREAR GRUPOS
+          </Button>{" "}
+        </div>
+      ) : null}
+  <br />
+  {isLoadingGroups ? (
+    <div className="loading">
+      <div className="spinner">
+        <h3>GENERANDO TORNEO</h3>
+        <Spinner animation="border" variant="warning" />
       </div>
-      <Button variant="outline-warning" onClick={()=> (dividirGrupos() , setIsGroups(true), setIsRegistration(false))}>CREAR GRUPOS</Button>{' '}
-      </div>
-        
+     </div>
+     ) : null}
+     
+     
+      {isGroups ? (
+        <div className="container_groups">
+          <div className="groups">
+            <ul>
+              <div className="title_group"> &nbsp;GRUPO1 :</div>
+              {grupo1Final.map((p, index) => (
+                <div className="celda_grupo" key={index}>
+                  <img className="img_groups" src={`/src/assets/img/avatar_${index+1}.png`} alt="" />
+                  &nbsp; &nbsp; <h3>{grupo1Final[index].nickname}</h3>
+                </div>
+              ))}
+            </ul>
+          </div>
+          <div className="groups">
+            <ul>
+            
+            
+              <div className="title_group"> &nbsp;GRUPO2 :</div>
+              {grupo2Final.map((p, index) => (
+                <div className="celda_grupo" key={index}>
+                  <img className="img_groups" src={`/src/assets/img/avatar_${index+1}.png`} alt="" />
+                  &nbsp; &nbsp; <h3>{grupo2Final[index].nickname}</h3>
+                  
+                </div>
+              ))}
+            </ul>
+          </div>
+        </div>
       ) : null}
 
-      {isGroups ? (
-      <div className="container_groups">
-      <div className="groups">
-        
-        <ul>
-          <div className="title_group">  &nbsp;GRUPO1 :</div>
-          {grupo1Final.map((p, index) => (
-            <div className="celda_grupo" key={index}>
-               &nbsp; &nbsp;{grupo1Final[index].namePlayer} ({grupo1Final[index].nickname})
-            </div>
-          ))}
-        </ul>
-      </div>
-      <div className="groups">
-        
-        <ul>
-          <div className="title_group">  &nbsp;GRUPO2 :</div>
-          {grupo2Final.map((p, index) => (
-            <div className="celda_grupo" key={index}>
-               &nbsp; &nbsp;{grupo2Final[index].namePlayer} ({grupo2Final[index].nickname})
-            </div>
-          ))}
-        </ul>
-      </div>
-        </div>
-    ) : null}
-      
-              {/* <div>
+      {/* <div>
         <button onClick={generateMatchups}>GENERA LAS LLAVES</button>
         <ul>
           <h3>PARTIDOS GRUPO1 :</h3>

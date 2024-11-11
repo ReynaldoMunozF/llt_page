@@ -26,6 +26,7 @@ export const Header = () =>{
           <Nav.Link href="/">HOME</Nav.Link>
           <Nav.Link href="Teams">TEAMS</Nav.Link>
           <Nav.Link href="Tournaments">TOURNAMENTS</Nav.Link>
+          <Nav.Link href="Picks">PICKS</Nav.Link>
           {/* <NavDropdown title="Dropdo" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">

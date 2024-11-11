@@ -1,0 +1,94 @@
+
+.name_tournament{
+    position: absolute;
+    color: #ebecee;
+    margin-top: -9em;
+    margin-left: -6em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    width: 16em;
+}
+.team1{
+    display: flex;
+    flex-direction: column;
+    width: 10em;
+    height: 4em;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 6em;
+    height: 5em;
+    background-color:#2d4961;
+    border-radius: 8px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:700;
+}
+.date{
+    font-size: 0.8em;
+    color: #878e9e;
+}
+.hour{
+    font-size: 1.1em;
+    color: #f6f2ef;
+}
+.match{
+    font-size: 0.8em;
+    color: #878e9e;
+}
+.team2{
+    display: flex;
+    width: 10em;
+    height: 3em;
+    background-color: rgb(195, 11, 251);
+}
+.img_team{
+    width: 4em;
+}
+.name_team{
+    font-size: 0.6em;
+    color: #f6f2ef;
+}
+.result{
+    display: flex;
+    width: 2em;
+    height: 2em;
+    border: 1px solid #617590;
+    border-radius: 5px;
+    background-color: #04142b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.3em;
+}
+@media (max-width: 600px) {
+    .img_team{
+        width: 3em;
+    }
+    .name_tournament{
+        position: absolute;
+        color: #ebecee;
+        margin-top: -11em;
+        margin-left: -6em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.6em;
+        width: 16em;
+    }
+    .match, .date{
+        font-size: 0.6em;
+        color: #878e9e;
+    }
+    .hour{
+        font-size: 1em;
+        color: #f6f2ef;
+    }
+  
+}
