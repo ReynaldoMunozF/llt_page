@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes} from "react-router-dom";
 import { Teams } from "../Teams/Teams";
 import { Tournaments } from "../Tournaments/Tournaments";
 import { Home } from "../Home/Home";

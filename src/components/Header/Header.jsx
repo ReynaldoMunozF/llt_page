@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Header.css"
 import { useNavigate } from "react-router-dom";
-import Logo_principal from "../../assets/IMG/LOGO_PEQUEÑO.png";
+import Logo_principal from "../../assets/img/logo_pequeño.png";
 
 
 

@@ -1,9 +1,7 @@
 import "./Player_card.css";
-import Lol from "../../assets/IMG/lol.jpg";
-import Fornite from "../../assets/IMG/fornite.jpg";
-import Valorant from "../../assets/IMG/valorant.jpg";
+
 import Player from "../../assets/img/player.png";
-import MarcoPlayer from "../../assets/IMG/marco_player.png";
+import MarcoPlayer from "../../assets/img/marco_player.png";
 // import ImagesPath from "../../assets/img/";
 
 
